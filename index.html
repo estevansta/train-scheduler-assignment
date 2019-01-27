@@ -40,16 +40,17 @@
                         </tr>
                     </thread>
                         <tbody id="table-data">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>The Polar Express</td>
+                            <td>The North Pole</td>
+                            <td>525600</td>
+                            <td>24:00</td>
+                            <td>479520</td>
                         </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <br>
 <!-- Train form input -->
     <div class="container">
         <div class="form">
@@ -64,12 +65,28 @@
                             <label for="trainName">Train Name</label>
                                 <input type="text" class="form-control" id="trainName" placeholder="The Polar Express">
                         </div>
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                                <input type="text" class="form-control" id="destination" placeholder="The North Pole">
+                        </div>
+                        <div class="firstTrainTime">
+                            <label for="firstTrainTime">First Train Time (HH:mm - military time)</label>
+                                <input type="text" class="form-control" id="firstTrainTime" placeholder="24:00">
+                        </div>
+                        <br>
+                        <div class="frequency">
+                            <label for="frequency">Frequency (min)</label>
+                                <input type="text" class="form-control" id="frequency" placeholder="Every 3 minutes">
+                        </div>
                     </form>
+                    <br>
                     <button type="button" class="btn btn-info" id="submit">Submit</button>
                 </div>
             </div>
         </div>
     </div>
+    <br>
+    <br>
     
 <!-- jquery cdn -->
 <script src="https://code.jquery.com/jquery.js"></script>
