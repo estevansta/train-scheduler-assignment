@@ -9,6 +9,13 @@
       };
       firebase.initializeApp(config);
 
-$( "#submit" ).click(function() {
-    console.log("Clicked!");
-  });
+
+    // on click function that sends data to firebase in a table called table-data from my ID
+    $("#submit").on("click", function() {
+        // current time 
+        var currentTime = Date.now();
+        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+        });
+    
+    
+
