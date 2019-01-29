@@ -12,6 +12,7 @@
 
     // on click function that sends data to firebase in a table called table-data from my ID
 
+    var database = firebase.database();
     var currentTime = Date.now();
     var randomFormat = "MM/DD/YYYY";
 
@@ -19,13 +20,6 @@
         event.preventDefault();
         // current time 
         var currentTime = Date.now();
-        //adds to firebase database 
-        var ref = firebase.database().ref("table-data").child(
-            currentTime).set({
-            [currentTime]: true
-            });
-        // format the unix time to hh:mm in console.log
-        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
         
         // getting the user input into the console that assigns a value to the id's in html
         var trainName = $("#trainName").val() || '';;
@@ -36,14 +30,20 @@
         console.log("TRAIN DESTINATION: " + destination);
         console.log("FIRST TRAIN TIME: " + firstTrainTime);
         console.log("EVERY: " + frequency + " MINUTES");
+        // format the unix time to hh:mm in console.log
+        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-        // new train variable for user inputs
+        // new train variable for user inputs into firebase
         var newTrain = {
+            currentTime: moment(currentTime).format("hh:mm"),
             train: trainName,
             destination: destination,
             initialTime: firstTrainTime,
             frequency: frequency,
-        }});
+        }
+        // push information to firebase
+        database.ref("table-data").push(newTrain);
+    });
 
     
 
