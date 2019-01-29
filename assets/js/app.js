@@ -21,7 +21,7 @@
         // current time 
         var currentTime = Date.now();
         
-        // getting the user input into the console that assigns a value to the id's in html
+        // getting the user input into the console that returns value to the id's in html
         var trainName = $("#trainName").val() || '';;
         var destination = $("#destination").val() || '';;
         var firstTrainTime = $("#firstTrainTime").val() || '';;
@@ -43,7 +43,20 @@
         }
         // push information to firebase
         database.ref("table-data").push(newTrain);
+    
     });
 
-    
+    // keep saved data from firebase and place into html
+    database.ref("table-data").on("child_added", function(snapshot) {
+        // console log the snapshot of the data inputted and stored in database and keep displayed
+        console.log(snapshot.val());
+            // variables that I have; currently missing the difference of times for next arrival; minutes away
+            var trainName = snapshot.val().train;
+            var destination = snapshot.val().destination;
+            var frequency = snapshot.val().frequency;
+        //append  data to the table-data on html
+        $("#table-data").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + 
+        frequency + "</td><td>");
+
+    });
 
